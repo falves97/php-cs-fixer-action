@@ -6,27 +6,15 @@ inputs:
     description: 'Command to be executed (e.g., check or fix)'
     required: true
     default: 'check'
-  path:
-    description: 'Path of the directory or file to be validated'
-    required: true
-    default: "."
-  config:
-    description: 'Path of the PHP-CS-Fixer configuration file (e.g., .php-cs-fixer.dist.php)'
-    required: true
-    default: ".php-cs-fixer.dist.php"
   flags:
-    description: 'Flags to customize the command (e.g., --path-mode=intersection, --rules=@PSR12)'
-    required: true
-    default: '--path-mode=intersection'
+    description: 'Flags to customize the command (e.g., --path-mode=intersection, --diff, --rules=@PSR12)'
+    required: false
 
 runs:
   using: 'docker'
   image: 'docker://ghcr.io/php-cs-fixer/php-cs-fixer:3.75-php8.3'
   args:
     - ${{ inputs.command }}
-    - ${{ inputs.path }}
-    - ${{ inputs.config }}
-    - ${{ inputs.flags }}
 
 branding:
   icon: 'check'
