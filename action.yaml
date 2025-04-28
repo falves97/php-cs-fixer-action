@@ -8,12 +8,14 @@ inputs:
     default: 'check'
   path:
     description: 'Path of the directory or file to be validated'
-    required: false
+    required: true
+    default: "."
   config:
     description: 'Path of the PHP-CS-Fixer configuration file (e.g., .php-cs-fixer.dist.php)'
-    required: false
+    required: true
+    default: ".php-cs-fixer.dist.php"
   flags:
-    description: 'Flags to customize the command (e.g., --path-mode=intersection, --rules=@PSR12, --config=.php-cs-fixer.dist.php)'
+    description: 'Flags to customize the command (e.g., --path-mode=intersection, --rules=@PSR12)'
     required: true
     default: '--path-mode=intersection'
 
