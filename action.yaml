@@ -1,0 +1,31 @@
+name: 'FBAlves-PHP-CS-Fixer'
+author: 'Fernando Braga Alves'
+description: 'Checks code style'
+inputs:
+  command:
+    description: 'Command to be executed (e.g., check or fix)'
+    required: true
+    default: 'check'
+  path:
+    description: 'Path of the directory or file to be validated'
+    required: false
+  config:
+    description: 'Path of the PHP-CS-Fixer configuration file (e.g., .php-cs-fixer.dist.php)'
+    required: false
+  flags:
+    description: 'Flags to customize the command (e.g., --path-mode=intersection, --rules=@PSR12, --config=.php-cs-fixer.dist.php)'
+    required: true
+    default: '--path-mode=intersection'
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/php-cs-fixer/php-cs-fixer:3.75-php8.3'
+  args:
+    - ${{ inputs.command }}
+    - ${{ inputs.path }}
+    - ${{ inputs.config }}
+    - ${{ inputs.flags }}
+
+branding:
+  icon: 'check'
+  color: 'green'
